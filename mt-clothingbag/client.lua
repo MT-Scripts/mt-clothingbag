@@ -56,7 +56,7 @@ RegisterNetEvent('mt-clothing:client:AbrirMenu', function()
     if Config.ClothingMenu == 'qb-clothing' then
         TriggerEvent('qb-clothing:client:openOutfitMenu')
     elseif Config.ClothingMenu == 'fivem-appearance' then
-        TriggerEvent('fivem-appearance:pickNewOutfit')
+        TriggerEvent('qb-clothing:client:openOutfitMenu')
     end
 end)
 
