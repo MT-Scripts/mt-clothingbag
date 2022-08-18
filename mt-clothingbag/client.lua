@@ -53,11 +53,7 @@ RegisterNetEvent('mt-clothingbag:client:AbrirMala', function(obj)
 end)
 
 RegisterNetEvent('mt-clothing:client:AbrirMenu', function()
-    if Config.ClothingMenu == 'qb-clothing' then
-        TriggerEvent('qb-clothing:client:openOutfitMenu')
-    elseif Config.ClothingMenu == 'fivem-appearance' then
-        TriggerEvent('fivem-appearance:pickNewOutfit')
-    end
+    TriggerEvent('qb-clothing:client:openOutfitMenu')
 end)
 
 RegisterNetEvent('mt-clothingbag:client:ProgressDespawnMala', function(obj)
