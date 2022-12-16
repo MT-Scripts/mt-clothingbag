@@ -1,6 +1,6 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
-RegisterNetEvent('mt-clothingbag:client:PousarMala', function()
+RegisterNetEvent('mt-clothingbag:client:openBag', function()
     QBCore.Functions.Progressbar('name_here', 'PUTTING BAG ON FLOOR...', 2000, false, true, {
         disableMovement = true,
         disableCarMovement = true,
@@ -12,11 +12,11 @@ RegisterNetEvent('mt-clothingbag:client:PousarMala', function()
         flags = 16,
     }, {}, {}, function()
         ClearPedTasks(PlayerPedId())
-        TriggerEvent('mt-clothingbag:client:SpawnMala')
+        TriggerEvent('mt-clothingbag:client:spawnBag')
     end)
 end)
 
-RegisterNetEvent('mt-clothingbag:client:SpawnMala', function()
+RegisterNetEvent('mt-clothingbag:client:spawnBag', function()
     local playerPed = PlayerPedId()
     local coords    = GetEntityCoords(playerPed)
     local forward   = GetEntityForwardVector(playerPed)
@@ -33,10 +33,10 @@ RegisterNetEvent('mt-clothingbag:client:SpawnMala', function()
 
     Wait(500)
 
-    TriggerEvent('mt-clothingbag:client:AbrirMala', obj)
+    TriggerEvent('mt-clothingbag:client:openBag', obj)
 end)
 
-RegisterNetEvent('mt-clothingbag:client:AbrirMala', function(obj)
+RegisterNetEvent('mt-clothingbag:client:openBag', function(obj)
     QBCore.Functions.Progressbar('name_here', 'OPENING BAG...', 5000, false, true, {
         disableMovement = true,
         disableCarMovement = true,
@@ -48,16 +48,16 @@ RegisterNetEvent('mt-clothingbag:client:AbrirMala', function(obj)
         flags = 16,
     }, {}, {}, function()
         ClearPedTasks(PlayerPedId())
-        TriggerEvent('mt-clothingbag:client:ProgressDespawnMala', obj)
+        TriggerEvent('mt-clothingbag:client:progressDespawnBag', obj)
     end)
 end)
 
-RegisterNetEvent('mt-clothing:client:AbrirMenu', function()
+RegisterNetEvent('mt-clothing:client:openMenu', function()
     TriggerEvent('qb-clothing:client:openOutfitMenu')
 end)
 
-RegisterNetEvent('mt-clothingbag:client:ProgressDespawnMala', function(obj)
-    QBCore.Functions.Progressbar('name_here', 'TAKING CLOTHES FROM BAG...', 2000, false, true, {
+RegisterNetEvent('mt-clothingbag:client:progressDespawnBag', function(obj)
+    QBCore.Functions.Progressbar('taking_cloth', 'TAKING CLOTHES FROM BAG...', 2000, false, true, {
         disableMovement = true,
         disableCarMovement = true,
         disableMouse = false,
@@ -70,7 +70,7 @@ RegisterNetEvent('mt-clothingbag:client:ProgressDespawnMala', function(obj)
 
         Wait(500)
 
-        QBCore.Functions.Progressbar('name_here', 'PICKING UP BAG...', 2000, false, true, {
+        QBCore.Functions.Progressbar('picking_bag', 'PICKING UP BAG...', 2000, false, true, {
             disableMovement = true,
             disableCarMovement = true,
             disableMouse = false,
@@ -80,13 +80,13 @@ RegisterNetEvent('mt-clothingbag:client:ProgressDespawnMala', function(obj)
             anim = 'pickup_low',
             flags = 16,
         }, {}, {}, function()
-            TriggerEvent('mt-clothingbag:client:DespawnMala', obj)
+            TriggerEvent('mt-clothingbag:client:despawnBag', obj)
         end)
     end)
 end)
 
-RegisterNetEvent('mt-clothingbag:client:DespawnMala', function(obj)
+RegisterNetEvent('mt-clothingbag:client:despawnBag', function(obj)
     DeleteObject(obj)
-    TriggerServerEvent('mt-clothingbag:server:RemoverMala')
-    TriggerEvent('mt-clothing:client:AbrirMenu')
+    TriggerServerEvent('mt-clothingbag:server:removeBag')
+    TriggerEvent('mt-clothing:client:openMenu')
 end)
