@@ -33,10 +33,10 @@ RegisterNetEvent('mt-clothingbag:client:spawnBag', function()
 
     Wait(500)
 
-    TriggerEvent('mt-clothingbag:client:openBag', obj)
+    TriggerEvent('mt-clothingbag:client:openBag2', obj)
 end)
 
-RegisterNetEvent('mt-clothingbag:client:openBag', function(obj)
+RegisterNetEvent('mt-clothingbag:client:openBag2', function(obj)
     QBCore.Functions.Progressbar('name_here', 'OPENING BAG...', 5000, false, true, {
         disableMovement = true,
         disableCarMovement = true,
