@@ -3,7 +3,7 @@ local QBCore = exports['qb-core']:GetCoreObject()
 QBCore.Functions.CreateUseableItem("clothing_bag", function(source, item)
     local Player = QBCore.Functions.GetPlayer(source)
 	if Player.Functions.GetItemBySlot(item.slot) ~= nil then
-        TriggerClientEvent('mt-clothingbag:client:openBag', source)
+        TriggerClientEvent('mt-clothingbag:client:putBag', source)
     end
 end)
 
