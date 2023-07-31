@@ -1,6 +1,6 @@
 local QBCore = exports['qb-core']:GetCoreObject()
 
-RegisterNetEvent('mt-clothingbag:client:openBag', function()
+RegisterNetEvent('mt-clothingbag:client:putBag', function()
     QBCore.Functions.Progressbar('name_here', 'PUTTING BAG ON FLOOR...', 2000, false, true, {
         disableMovement = true,
         disableCarMovement = true,
